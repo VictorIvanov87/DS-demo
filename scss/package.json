@@ -7,6 +7,8 @@
     "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "postcss-scss": "^4.0.6",
     "prettier": "^2.8.8",
     "stylelint": "^15.10.0",
@@ -17,5 +19,13 @@
   "scripts": {
     "lint": "stylelint \"**/*.scss\"",
     "lint-fix": "yarn lint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.scss": "yarn lint:fix"
   }
 }
