@@ -1,11 +1,23 @@
 {
-  "name": "ds-demo",
+  "name": "@ds.e/core",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": "https://github.com/VictorIvanov87/DS-demo.git",
+  "author": "Victor Hristov <victor.hristov@mentormate.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^7.1.1"
   },
-  "author": "",
-  "license": "ISC"
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/normalize-scss"
+    ]
+  },
+  "scripts": {
+    "build": "yarn lerna run build"
+  }
 }
