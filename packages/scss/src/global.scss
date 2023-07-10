@@ -12,14 +12,14 @@
  =                   Foundations               =
  =============================================*/
 
-@import "foundation/all";
+@import 'foundation/all';
 
 /*==============================================
   =                   Base                      =
   =============================================*/
 
-@import "base/reset";
-@import "base/root";
+@import 'base/reset';
+@import 'base/root';
 
 body {
   font-family: $body-font-family;
