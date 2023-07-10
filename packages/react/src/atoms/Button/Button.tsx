@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ label }) => {
-  return <button>{label}</button>;
+  return <button>{label || 'Button'}</button>;
 };
 
 export default Button;
