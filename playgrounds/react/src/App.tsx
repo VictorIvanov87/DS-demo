@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, CTA, CardWithOverline } from "@ds.e/react";
 import "@ds.e/scss/lib/global.css";
+import "@ds.e/scss/lib/utilities.css";
 import "@ds.e/scss/lib/Button.css";
 import "@ds.e/scss/lib/CTA.css";
 import "@ds.e/scss/lib/Title";
