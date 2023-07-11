@@ -1,9 +1,9 @@
 import React from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 
-import { Button } from "@ds.e/react";
+import App from "./App";
 
-const container: HTMLElement | any = document.getElementById('root');
+const container: HTMLElement | any = document.getElementById("root");
 const root = createRoot(container);
 
-root.render(<Button label="Exit"></Button>);
+root.render(<App />);

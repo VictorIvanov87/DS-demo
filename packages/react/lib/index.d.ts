@@ -1,2 +1,3 @@
 import Button from "./atoms/Button";
-export { Button };
+import CTA from "./atoms/CTA";
+export { Button, CTA };

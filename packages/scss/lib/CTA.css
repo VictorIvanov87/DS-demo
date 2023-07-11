@@ -103,8 +103,21 @@
  * styles for components.
  *
  */
-.dse-button-container {
-  color: #0a0;
-  display: flex;
-  font-size: medium;
+.cta-button {
+  font-family: var(--dse-body-font-family-roboto, "Roboto", serif);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  padding: 8px;
+}
+
+.cta-button.primary {
+  color: #6202ee;
+}
+
+.cta-button.secondary {
+  color: #0468db;
 }

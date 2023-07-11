@@ -28901,9 +28901,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const Button = ({
   label
 }) => {
-  return _react.default.createElement("button", null, label || 'Button');
+  return _react.default.createElement("button", null, label);
 };
 var _default = Button;
+exports.default = _default;
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@ds.e/react/lib/atoms/CTA/CTA.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const CTA = ({
+  type = "primary",
+  className
+}) => {
+  return _react.default.createElement("button", {
+    className: `${type} ${className}`
+  }, "CTA");
+};
+var _default = CTA;
 exports.default = _default;
 },{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@ds.e/react/lib/index.js":[function(require,module,exports) {
 "use strict";
@@ -28917,21 +28936,118 @@ Object.defineProperty(exports, "Button", {
     return _Button.default;
   }
 });
+Object.defineProperty(exports, "CTA", {
+  enumerable: true,
+  get: function () {
+    return _CTA.default;
+  }
+});
 var _Button = _interopRequireDefault(require("./atoms/Button/Button.js"));
+var _CTA = _interopRequireDefault(require("./atoms/CTA/CTA.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./atoms/Button/Button.js":"../../../node_modules/@ds.e/react/lib/atoms/Button/Button.js"}],"index.tsx":[function(require,module,exports) {
+},{"./atoms/Button/Button.js":"../../../node_modules/@ds.e/react/lib/atoms/Button/Button.js","./atoms/CTA/CTA.js":"../../../node_modules/@ds.e/react/lib/atoms/CTA/CTA.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+    cssTimeout = null;
+  }, 50);
+}
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../node_modules/@ds.e/scss/lib/global.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@ds.e/scss/lib/Button.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@ds.e/scss/lib/CTA.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _react2 = require("@ds.e/react");
+require("@ds.e/scss/lib/global.css");
+require("@ds.e/scss/lib/Button.css");
+require("@ds.e/scss/lib/CTA.css");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var App = function App() {
+  return _react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
+    label: "Click me!"
+  }), _react.default.createElement(_react2.CTA, {
+    type: "primary",
+    className: "cta-button"
+  }));
+};
+var _default = App;
+exports.default = _default;
+},{"react":"../../../node_modules/react/index.js","@ds.e/react":"../../../node_modules/@ds.e/react/lib/index.js","@ds.e/scss/lib/global.css":"../../../node_modules/@ds.e/scss/lib/global.css","@ds.e/scss/lib/Button.css":"../../../node_modules/@ds.e/scss/lib/Button.css","@ds.e/scss/lib/CTA.css":"../../../node_modules/@ds.e/scss/lib/CTA.css"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 var _client = require("react-dom/client");
-var _react2 = require("@ds.e/react");
+var _App = _interopRequireDefault(require("./App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-var container = document.getElementById('root');
+var container = document.getElementById("root");
 var root = (0, _client.createRoot)(container);
-root.render(_react.default.createElement(_react2.Button, {
-  label: "Exit"
-}));
-},{"react":"../../../node_modules/react/index.js","react-dom/client":"../../../node_modules/react-dom/client.js","@ds.e/react":"../../../node_modules/@ds.e/react/lib/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+root.render(_react.default.createElement(_App.default, null));
+},{"react":"../../../node_modules/react/index.js","react-dom/client":"../../../node_modules/react-dom/client.js","./App":"App.tsx"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28956,7 +29072,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62340" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57320" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

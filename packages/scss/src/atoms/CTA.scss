@@ -1,0 +1,20 @@
+@import 'foundation/all';
+
+.cta-button {
+  background: none;
+  border: 0;
+  font-family: $body-font-family-roboto;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  line-height: $fs-base;
+  padding: 8px;
+  text-transform: uppercase;
+
+  &.primary {
+    color: $lavandule;
+  }
+
+  &.secondary {
+    color: $blue;
+  }
+}

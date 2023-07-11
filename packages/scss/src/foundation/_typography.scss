@@ -10,7 +10,8 @@
 /*=============================================
 =            Body font family                  =
 =============================================*/
-$body-font-family: var(--dse-body-font-family, $playfair) !default;
+$body-font-family-playfair: var(--dse-body-font-family-playfair, $playfair) !default;
+$body-font-family-roboto: var(--dse-body-font-family-roboto, $roboto) !default;
 
 /*=============================================
 =            Body font sizes                  =
