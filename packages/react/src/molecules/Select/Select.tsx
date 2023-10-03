@@ -144,6 +144,7 @@ const Select: FC<SelectProps> = ({
 	return (
 		<div className="dse-select">
 			<button
+				data-testid="DseSelectButton"
 				ref={labelRef}
 				className="dse-select__label"
 				onClick={() => setIsOpen(!isOpen)}
@@ -185,6 +186,7 @@ const Select: FC<SelectProps> = ({
 							) => ({
 								...overrrideProps,
 								ref,
+								role: "menuitemradio",
 								tabIndex: isHighlighted ? -1 : 0,
 								className: `dse-select__option
 								${isSelected ? "dse-select__option--selected" : ""}
