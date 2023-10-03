@@ -7,6 +7,7 @@ import Title from "./atoms/Title";
 import Margin from "./atoms/Margin";
 import CardFooter from "./molecules/CardFooter";
 import CardHeader from "./molecules/CardHeader";
+import Select from "./molecules/Select";
 import CardWithOverline from "./organism/CardWithOverline";
 
 export {
@@ -19,5 +20,6 @@ export {
 	Image,
 	CardHeader,
 	CardFooter,
+	Select,
 	CardWithOverline,
 };

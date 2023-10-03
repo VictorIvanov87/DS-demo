@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, CTA, CardWithOverline, Margin } from "@ds.e/react";
+import { Button, CTA, CardWithOverline, Margin, Select } from "@ds.e/react";
 import "@ds.e/scss/lib/global.css";
 import "@ds.e/scss/lib/utilities.css";
 import "@ds.e/scss/lib/Button.css";
@@ -8,12 +8,20 @@ import "@ds.e/scss/lib/CTA.css";
 import "@ds.e/scss/lib/Title";
 import "@ds.e/scss/lib/Subtitle";
 import "@ds.e/scss/lib/CircleIcon";
+import "@ds.e/scss/lib/Select";
 
 const App = () => {
 	return (
 		<div>
 			<Button label="Click me!" />
 			<CTA className="cta-button">CTA button</CTA>
+			<Select
+				options={[
+					{ value: "pink", label: "Pink" },
+					{ value: "blue", label: "Blue" },
+					{ value: "red", label: "Red" },
+				]}
+			/>
 			<Margin space="sm">
 				<CardWithOverline
 					cardImg="https://upload.wikimedia.org/wikipedia/commons/6/6c/2019_Ford_Mustang_GT_Blue.jpg"
