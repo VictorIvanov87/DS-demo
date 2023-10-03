@@ -1,4 +1,12 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
+import React, {
+	FC,
+	KeyboardEventHandler,
+	ReactNode,
+	RefObject,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 
 interface SelectOption {
 	label: string;
@@ -18,6 +26,44 @@ interface SelectProps {
 	renderOption?: (props: RenderOptionProps) => ReactNode;
 }
 
+const keyCodes = {
+	ENTER: 13,
+	SPACE: 32,
+	DOWN_ARROW: 40,
+	UP_ARROW: 38,
+	ESC: 27,
+};
+
+const getPrevOptionIndex = (
+	currentIndex: number | null,
+	options: Array<SelectOption>
+) => {
+	if (currentIndex === null) {
+		return 0;
+	}
+
+	if (currentIndex === 0) {
+		return options.length - 1;
+	}
+
+	return currentIndex - 1;
+};
+
+const getNextOptionIndex = (
+	currentIndex: number | null,
+	options: Array<SelectOption>
+) => {
+	if (currentIndex === null) {
+		return 0;
+	}
+
+	if (currentIndex === options.length - 1) {
+		return 0;
+	}
+
+	return currentIndex + 1;
+};
+
 const Select: FC<SelectProps> = ({
 	onOptionSelected,
 	options = [],
@@ -26,8 +72,14 @@ const Select: FC<SelectProps> = ({
 }) => {
 	const labelRef = useRef<HTMLButtonElement>(null);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [highlightedIndex, setHighlightedIndex] = useState<number | null>(
+		null
+	);
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 	const [overlayTop, setOverlayTop] = useState<number>(0);
+	const [optionRefs, setOptionRefs] = useState<
+		Array<RefObject<HTMLLIElement>>
+	>([]);
 	const selectedOption =
 		selectedIndex !== null ? options[selectedIndex] : null;
 
@@ -35,12 +87,67 @@ const Select: FC<SelectProps> = ({
 		setOverlayTop(Number(labelRef.current?.offsetHeight || 0) + 10);
 	}, [labelRef.current?.offsetHeight]);
 
+	useEffect(() => {
+		setOptionRefs(options.map((_) => React.createRef<HTMLLIElement>()));
+	}, [options.length]);
+
+	useEffect(() => {
+		if (isOpen && highlightedIndex !== null) {
+			const ref = optionRefs[highlightedIndex];
+
+			if (ref && ref.current) {
+				ref.current.focus();
+			}
+		}
+	}, [isOpen, highlightedIndex]);
+
+	const highlightItem = (i: number | null) => {
+		setHighlightedIndex(i);
+	};
+
+	const onOptionKeydown: KeyboardEventHandler = (event) => {
+		if (event.keyCode === keyCodes.ESC) {
+			setIsOpen(false);
+			return;
+		}
+
+		if (event.keyCode === keyCodes.DOWN_ARROW) {
+			highlightItem(getNextOptionIndex(highlightedIndex, options));
+		}
+
+		if (event.keyCode === keyCodes.UP_ARROW) {
+			highlightItem(getPrevOptionIndex(highlightedIndex, options));
+		}
+
+		if (event.keyCode === keyCodes.ENTER) {
+			setSelectedIndex(highlightedIndex);
+			onOptionSelected &&
+				highlightedIndex &&
+				onOptionSelected(options[highlightedIndex], highlightedIndex);
+			setIsOpen(false);
+		}
+	};
+
+	const onButtonKeyDown: KeyboardEventHandler = (event) => {
+		event.preventDefault();
+
+		if (
+			[keyCodes.ENTER, keyCodes.SPACE, keyCodes.DOWN_ARROW].includes(
+				event.keyCode
+			)
+		) {
+			setIsOpen(true);
+			highlightItem(0);
+		}
+	};
+
 	return (
 		<div className="dse-select">
 			<button
 				ref={labelRef}
 				className="dse-select__label"
 				onClick={() => setIsOpen(!isOpen)}
+				onKeyDown={onButtonKeyDown}
 			>
 				<span>{selectedOption ? selectedOption.label : label}</span>
 				<svg
@@ -68,23 +175,34 @@ const Select: FC<SelectProps> = ({
 				<ul className="dse-select__overlay" style={{ top: overlayTop }}>
 					{options.map((option, optionIndex) => {
 						const isSelected = selectedIndex === optionIndex;
-
+						const isHighlighted = highlightedIndex === optionIndex;
+						const ref = optionRefs[optionIndex];
 						const renderOptionsProps = {
-							option,
 							isSelected,
+							option,
 							getOptionRecommendedProps: (
 								overrrideProps = {}
 							) => ({
-								className: `dse-select__option ${
-									isSelected
-										? "dse-select__option--selected"
-										: ""
-								}`,
-								key: option.value,
-								onClick: () =>
-									onOptionSelected &&
-									onOptionSelected(option, optionIndex),
 								...overrrideProps,
+								ref,
+								tabIndex: isHighlighted ? -1 : 0,
+								className: `dse-select__option
+								${isSelected ? "dse-select__option--selected" : ""}
+								${isHighlighted ? "dse-select__option--highlighted" : ""}`,
+								key: option.value,
+								onKeyDown: onOptionKeydown,
+								onMouseEnter: () => {
+									highlightItem(optionIndex);
+								},
+								onMouseLeave: () => {
+									highlightItem(null);
+								},
+								onClick: () => {
+									setIsOpen(false);
+									setSelectedIndex(optionIndex);
+									onOptionSelected &&
+										onOptionSelected(option, optionIndex);
+								},
 							}),
 						};
 
@@ -94,19 +212,7 @@ const Select: FC<SelectProps> = ({
 
 						return (
 							<li
-								className={`dse-select__option ${
-									isSelected
-										? "dse-select__option--selected"
-										: ""
-								}`}
-								key={option.value}
-								onClick={() => {
-									setIsOpen(false);
-									onOptionSelected &&
-										onOptionSelected(option, optionIndex);
-									setSelectedIndex(optionIndex);
-									setIsOpen(false);
-								}}
+								{...renderOptionsProps.getOptionRecommendedProps()}
 							>
 								<span>{option.label}</span>
 								{isSelected && (
