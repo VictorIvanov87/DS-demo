@@ -6,8 +6,11 @@
 	"author": "Victor Hristov <victor.hristov@mentormate.com>",
 	"license": "MIT",
 	"devDependencies": {
+		"@commitlint/cli": "^17.7.2",
+		"@commitlint/config-conventional": "^17.7.0",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
+		"husky": "^8.0.0",
 		"lerna": "^7.1.1"
 	},
 	"workspaces": {
@@ -24,11 +27,17 @@
 		"dev": "yarn lerna run dev",
 		"test": "yarn lerna run test",
 		"publish": "yarn test && yarn build && yarn lerna publish",
-		"commit": "yarn cz"
+		"commit": "yarn cz",
+		"prepare": "husky install"
 	},
 	"config": {
 		"commitizen": {
 			"path": "cz-conventional-changelog"
+		}
+	},
+	"husky": {
+		"hooks:": {
+			"commit-msg": "comitling -E HUSKY_GIT_PARAMS"
 		}
 	},
 	"private": true
