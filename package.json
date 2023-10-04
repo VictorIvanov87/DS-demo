@@ -28,7 +28,8 @@
 		"test": "yarn lerna run test",
 		"publish": "yarn test && yarn build && yarn lerna publish",
 		"commit": "yarn cz",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"test:chromatic": "yarn chromatic --project-token=\"$CHROMATIC_PROJECT_TOKEN\""
 	},
 	"config": {
 		"commitizen": {
