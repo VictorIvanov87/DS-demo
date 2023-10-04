@@ -1,6 +1,6 @@
 import React, { FC, ImgHTMLAttributes } from "react";
 
-import spacing from "@ds.e.test/foundation";
+import spacing from "@ds.e/foundation";
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	width?: keyof typeof spacing;

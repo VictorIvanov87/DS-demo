@@ -6,10 +6,6 @@
 	"homepage": "https://github.com/VictorIvanov87/DS-demo#readme",
 	"license": "ISC",
 	"main": "lib/index.js",
-	"directories": {
-		"lib": "lib",
-		"test": "__tests__"
-	},
 	"files": [
 		"lib"
 	],
@@ -18,7 +14,6 @@
 		"url": "git+https://github.com/VictorIvanov87/DS-demo.git"
 	},
 	"scripts": {
-		"test": "node ./__tests__/foundation.test.js",
 		"build": "tsc",
 		"dev": "yarn build -w"
 	},
