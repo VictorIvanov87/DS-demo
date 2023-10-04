@@ -50,6 +50,6 @@
 		"access": "public"
 	},
 	"readme": "ERROR: No README data found!",
-	"_id": "@ds.e/react@1.0.0",
+	"_id": "@ds.e.test/react@1.0.0",
 	"gitHead": "34d96c1129429a6bec67c4065b70ca32bebc1843"
 }

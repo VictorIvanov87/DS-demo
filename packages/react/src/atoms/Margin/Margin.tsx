@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { spacing } from "@ds.e/foundation";
+import { spacing } from "@ds.e.test/foundation";
 
 export interface MarginProps {
 	space?: keyof typeof spacing;
