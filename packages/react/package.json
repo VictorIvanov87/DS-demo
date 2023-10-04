@@ -4,8 +4,10 @@
   "main": "lib/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.4.6",
     "@storybook/addon-essentials": "7.4.6",
     "@storybook/addon-interactions": "7.4.6",
+    "@storybook/addon-knobs": "^7.0.2",
     "@storybook/addon-links": "7.4.6",
     "@storybook/addon-onboarding": "1.0.8",
     "@storybook/blocks": "7.4.6",

@@ -172,74 +172,73 @@ const Select: FC<SelectProps> = ({
 					/>
 				</svg>
 			</button>
-			{isOpen && (
-				<ul className="dse-select__overlay" style={{ top: overlayTop }}>
-					{options.map((option, optionIndex) => {
-						const isSelected = selectedIndex === optionIndex;
-						const isHighlighted = highlightedIndex === optionIndex;
-						const ref = optionRefs[optionIndex];
-						const renderOptionsProps = {
-							isSelected,
-							option,
-							getOptionRecommendedProps: (
-								overrrideProps = {}
-							) => ({
-								...overrrideProps,
-								ref,
-								role: "menuitemradio",
-								tabIndex: isHighlighted ? -1 : 0,
-								className: `dse-select__option
+			<ul
+				className={`dse-select__overlay ${
+					isOpen ? " dse-select__overlay--open" : ""
+				}`}
+				style={{ top: overlayTop }}
+			>
+				{options.map((option, optionIndex) => {
+					const isSelected = selectedIndex === optionIndex;
+					const isHighlighted = highlightedIndex === optionIndex;
+					const ref = optionRefs[optionIndex];
+					const renderOptionsProps = {
+						isSelected,
+						option,
+						getOptionRecommendedProps: (overrrideProps = {}) => ({
+							...overrrideProps,
+							ref,
+							role: "menuitemradio",
+							tabIndex: isHighlighted ? -1 : 0,
+							className: `dse-select__option
 								${isSelected ? "dse-select__option--selected" : ""}
 								${isHighlighted ? "dse-select__option--highlighted" : ""}`,
-								key: option.value,
-								onKeyDown: onOptionKeydown,
-								onMouseEnter: () => {
-									highlightItem(optionIndex);
-								},
-								onMouseLeave: () => {
-									highlightItem(null);
-								},
-								onClick: () => {
-									setIsOpen(false);
-									setSelectedIndex(optionIndex);
-									onOptionSelected &&
-										onOptionSelected(option, optionIndex);
-								},
-							}),
-						};
+							key: option.value,
+							onKeyDown: onOptionKeydown,
+							onMouseEnter: () => {
+								highlightItem(optionIndex);
+							},
+							onMouseLeave: () => {
+								highlightItem(null);
+							},
+							onClick: () => {
+								setIsOpen(false);
+								setSelectedIndex(optionIndex);
+								onOptionSelected &&
+									onOptionSelected(option, optionIndex);
+							},
+						}),
+					};
 
-						if (renderOption) {
-							return renderOption(renderOptionsProps);
-						}
+					if (renderOption) {
+						return renderOption(renderOptionsProps);
+					}
 
-						return (
-							<li
-								{...renderOptionsProps.getOptionRecommendedProps()}
-							>
-								<span>{option.label}</span>
-								{isSelected && (
-									<svg
-										width="1rem"
-										height="1rem"
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										strokeWidth={1.5}
-										stroke="currentColor"
-										className="w-6 h-6"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M4.5 12.75l6 6 9-13.5"
-										/>
-									</svg>
-								)}
-							</li>
-						);
-					})}
-				</ul>
-			)}
+					return (
+						<li {...renderOptionsProps.getOptionRecommendedProps()}>
+							<span>{option.label}</span>
+							{isSelected && (
+								<svg
+									width="1rem"
+									height="1rem"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									strokeWidth={1.5}
+									stroke="currentColor"
+									className="w-6 h-6"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M4.5 12.75l6 6 9-13.5"
+									/>
+								</svg>
+							)}
+						</li>
+					);
+				})}
+			</ul>
 		</div>
 	);
 };
