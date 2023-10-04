@@ -1,14 +1,20 @@
 import React from "react";
-import { Button, CTA, CardWithOverline, Margin, Select } from "@ds.e/react";
-import "@ds.e/scss/lib/global.css";
-import "@ds.e/scss/lib/utilities.css";
-import "@ds.e/scss/lib/Button.css";
-import "@ds.e/scss/lib/Margin.css";
-import "@ds.e/scss/lib/CTA.css";
-import "@ds.e/scss/lib/Title";
-import "@ds.e/scss/lib/Subtitle";
-import "@ds.e/scss/lib/CircleIcon";
-import "@ds.e/scss/lib/Select";
+import {
+	Button,
+	CTA,
+	CardWithOverline,
+	Margin,
+	Select,
+} from "@ds.e.test/react";
+import "@ds.e.test/scss/lib/global.css";
+import "@ds.e.test/scss/lib/utilities.css";
+import "@ds.e.test/scss/lib/Button.css";
+import "@ds.e.test/scss/lib/Margin.css";
+import "@ds.e.test/scss/lib/CTA.css";
+import "@ds.e.test/scss/lib/Title";
+import "@ds.e.test/scss/lib/Subtitle";
+import "@ds.e.test/scss/lib/CircleIcon";
+import "@ds.e.test/scss/lib/Select";
 
 const App = () => {
 	return (

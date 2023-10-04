@@ -28,7 +28,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "@ds.e/react",
+    "name": "@ds.e.test/react",
     "version": "1.0.0",
     "main": "lib/index.js",
     "license": "MIT",

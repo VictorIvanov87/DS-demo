@@ -1,7 +1,7 @@
 import React from "react";
 import {} from "@storybook/addon-a11y";
 import Select from "./Select";
-import "@ds.e/scss/lib/Select.css";
+import "@ds.e.test/scss/lib/Select.css";
 
 const mockedOptions = [
 	{ label: "Blue", value: "blue" },
