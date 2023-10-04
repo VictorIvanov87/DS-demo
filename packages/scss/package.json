@@ -1,34 +1,37 @@
 {
-  "name": "@ds.e/scss",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "normalize-scss": "^7.0.1"
-  },
-  "devDependencies": {
-    "husky": "4",
-    "lint-staged": "^13.2.3",
-    "node-sass": "^9.0.0",
-    "prettier": "^2.0.5",
-    "stylelint": "^13.6.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-sass-guidelines": "^7.0.0",
-    "stylelint-prettier": "^1.1.2",
-    "stylelint-config-idiomatic-order": "^9.0.0"
-  },
-  "scripts": {
-    "lint": "stylelint \"**/*.scss\"",
-    "lint-fix": "yarn lint --fix",
-    "build": "node src/scripts/build.js",
-    "dev": "nodemon --watch src --exec yarn build -e scss"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.scss": "yarn lint-fix"
-  }
+	"name": "@ds.e/scss",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"normalize-scss": "^7.0.1"
+	},
+	"devDependencies": {
+		"husky": "4",
+		"lint-staged": "^13.2.3",
+		"node-sass": "^9.0.0",
+		"prettier": "^2.0.5",
+		"stylelint": "^13.6.1",
+		"stylelint-config-prettier": "^8.0.2",
+		"stylelint-config-sass-guidelines": "^7.0.0",
+		"stylelint-prettier": "^1.1.2",
+		"stylelint-config-idiomatic-order": "^9.0.0"
+	},
+	"scripts": {
+		"lint": "stylelint \"**/*.scss\"",
+		"lint-fix": "yarn lint --fix",
+		"build": "node src/scripts/build.js",
+		"dev": "nodemon --watch src --exec yarn build -e scss"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.scss": "yarn lint-fix"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

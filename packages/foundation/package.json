@@ -1,31 +1,34 @@
 {
-  "name": "@ds.e/foundation",
-  "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "Victor Hristov <victor.hristov@mentormate.com>",
-  "homepage": "https://github.com/VictorIvanov87/DS-demo#readme",
-  "license": "ISC",
-  "main": "lib/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VictorIvanov87/DS-demo.git"
-  },
-  "scripts": {
-    "test": "node ./__tests__/foundation.test.js",
-    "build": "tsc",
-    "dev": "yarn build -w"
-  },
-  "bugs": {
-    "url": "https://github.com/VictorIvanov87/DS-demo/issues"
-  },
-  "devDependencies": {
-    "typescript": "^5.1.6"
-  }
+	"name": "@ds.e/foundation",
+	"version": "0.0.0",
+	"description": "> TODO: description",
+	"author": "Victor Hristov <victor.hristov@mentormate.com>",
+	"homepage": "https://github.com/VictorIvanov87/DS-demo#readme",
+	"license": "ISC",
+	"main": "lib/index.js",
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VictorIvanov87/DS-demo.git"
+	},
+	"scripts": {
+		"test": "node ./__tests__/foundation.test.js",
+		"build": "tsc",
+		"dev": "yarn build -w"
+	},
+	"bugs": {
+		"url": "https://github.com/VictorIvanov87/DS-demo/issues"
+	},
+	"devDependencies": {
+		"typescript": "^5.1.6"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
