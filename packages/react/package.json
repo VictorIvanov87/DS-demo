@@ -43,7 +43,7 @@
 		"test:watch": "npm test --watch",
 		"start-storybook": "storybook dev",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build",
+		"build:storybook": "storybook build",
 		"test:chromatic": "yarn chromatic --project-token=\"$CHROMATIC_PROJECT_TOKEN\""
 	},
 	"publishConfig": {
